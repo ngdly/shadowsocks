@@ -18,6 +18,7 @@
 from __future__ import absolute_import, division, print_function, \
     with_statement
 
+import sys
 import time
 import socket
 import errno
@@ -337,6 +338,7 @@ class TCPRelayHandler(object):
         logging.info('connecting %s:%d from %s:%d' %
                      (common.to_str(remote_addr), remote_port,
                       self._client_address[0], self._client_address[1]))
+        sys.stdout.flush()
         if self._is_local is False:
             # spec https://shadowsocks.org/en/spec/one-time-auth.html
             self._ota_enable_session = addrtype & ADDRTYPE_AUTH
